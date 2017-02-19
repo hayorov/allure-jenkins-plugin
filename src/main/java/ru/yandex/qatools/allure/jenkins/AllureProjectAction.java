@@ -9,10 +9,12 @@ import hudson.model.ProminentProjectAction;
 
 
 /**
- * {@link Action} that shows link to the allure report of last successful build on the project page
+ * @deprecated
+ * {@link Action} that shows link to the allure report on the project page
  *
  * @author pupssman
  */
+@Deprecated
 public class AllureProjectAction implements ProminentProjectAction, StaplerProxy {
     private final AbstractProject<?, ?> project;
 
@@ -21,23 +23,23 @@ public class AllureProjectAction implements ProminentProjectAction, StaplerProxy
     }
 
     @Override
+    public String getDisplayName() {
+        return AllureReportPlugin.getTitle();
+    }
+
+    @Override
     public String getIconFileName() {
         return this.getTarget() != null ? AllureReportPlugin.getIconFilename() : null;
     }
 
     @Override
-    public String getDisplayName() {
-        return "Latest Allure Test Report";
-    }
-
-    @Override
     public String getUrlName() {
-        return AllureReportPlugin.ALLURE_URL_PATH;
+        return AllureReportPlugin.URL_PATH;
     }
 
     @Override
     public Object getTarget() {
-        AbstractBuild<?, ?> build = project.getLastSuccessfulBuild();
-        return build != null ? build.getAction(AllureBuildAction.class) : null;
+        AbstractBuild<?, ?> build = project.getLastBuild();
+        return build == null ? null : build.getAction(AllureBuildAction.class);
     }
 }

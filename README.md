@@ -1,24 +1,14 @@
-## Allure Jenkins Plugin
+# Allure Jenkins Plugin
 
-Плагин, анализирующий allure-отчеты в Jenkins. 
+[![release](http://github-release-version.herokuapp.com/github/jenkinsci/allure-plugin/release.svg?style=flat)](https://github.com/jenkinsci/allure-plugin/releases/latest) [![build](https://jenkins.ci.cloudbees.com/buildStatus/icon?job=plugins/allure-plugin)](https://jenkins.ci.cloudbees.com/job/plugins/job/allure-plugin/)
 
-Для использования нужно добавить в джобу Post-build action `Publish Allure Tests Report`, в котором указать директорию с xml-данными для отчетов.
+## Getting Started
 
-После запуска джобы в билде появится ссылка `Allure Report`, указывающая на отчет для этого билда, а в джобе -- ссылка `Latest Allure Test Report`, указывающая на отчет последнего запуска.
+* [Documentation](http://wiki.qatools.ru/display/AL/Allure+Jenkins+Plugin)
+* [Issue Tracking](https://github.com/jenkinsci/allure-plugin/issues?labels=&milestone=&page=1&state=open)
+* [Releases and Changelog](https://github.com/jenkinsci/allure-plugin/releases)
 
-Для генерации собственно xml-отчетов в джобе можно использовать адаптеры для тестов -- например, [allure-python](https://github.yandex-team.ru/allure/allure-python) или [allure-java](https://github.yandex-team.ru/allure/allure-java).
-
-
-How to make & install
-
-Требуется:
-Maven
-Java 1.7*
-
-1. git clone allure-jenkins-plugin
-2. cd ./allure-jenkins-plugin && mvn package
-3. cp allure-jenkins-plugin/target/allure-jenkins-plugin.hpi $JENKINS_HOME/plugins/
-4. touch $JENKINS_HOME/plugins/allure-jenkins-plugin.hpi.pinned
-5. restart jenkins service
-
-* также на хосте с Jenkins.
+## Contact us
+* Gitter chat room: [https://gitter.im/allure-framework/allure-core](https://gitter.im/allure-framework/allure-core)
+* Mailing list: [allure@yandex-team.ru](mailto:allure@yandex-team.ru)
+* StackOverflow tag: [Allure](http://stackoverflow.com/questions/tagged/allure)
