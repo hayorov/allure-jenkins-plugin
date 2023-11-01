@@ -1,0 +1,25 @@
+name: Release
+
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+          cache: 'maven'
+          server-id: maven.jenkins-ci.org
+          server-username: JENKINS_USERNAME
+          server-password: JENKINS_TOKEN
+      - run: |
+          ./mvnw versions:set -DnewVersion=${GITHUB_REF:10}
+          ./mvnw deploy
+        env:
+          JENKINS_USERNAME: ${{ secrets.JENKINS_USERNAME }}
+          JENKINS_TOKEN: ${{ secrets.JENKINS_TOKEN }}
